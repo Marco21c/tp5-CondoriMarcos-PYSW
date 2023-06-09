@@ -32,4 +32,16 @@ transaccionCtrl.getTransaccionxCliente = async(req,res) => {
            })
     }
 }
+transaccionCtrl.getTransaccionesxDivisas = async(req,res) => {
+    var transacciones = await Transaccion.find({monedaOrigen:req.params.divisaOrigen,monedaDestino:req.params.divisaDestino});
+    try{
+        res.status(200).json(transacciones)
+      }catch(error){
+          res.status(400).json({
+              'status':'0',
+              'msg' : 'Error procesando operacion'
+             })
+      }
+}
+
 module.exports = transaccionCtrl;

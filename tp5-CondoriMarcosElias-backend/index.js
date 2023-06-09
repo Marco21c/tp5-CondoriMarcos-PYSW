@@ -7,7 +7,9 @@ app.use(express.json());
 app.use(cors({origin:'http://localhost:4200'}));
 //Cargamos el modulo de direccionamiento de rutas
 app.use('/api/producto', require('./routers/producto.route.js'));
-app.use('/api/transaccion',require('./routers/transaccion.route.js') )
+app.use('/api/transaccion',require('./routers/transaccion.route.js'));
+app.use('/api/espectador',require('./routers/espectador.route.js'));
+app.use('/api/ticket',require('./routers/ticket.route.js'));
 //setting
 app.set('port', process.env.PORT || 3000);
 //starting the server
