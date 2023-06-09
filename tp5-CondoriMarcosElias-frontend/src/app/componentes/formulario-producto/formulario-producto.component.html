@@ -1,0 +1,38 @@
+<div class="container mb-2 ">
+    <h1 class="text-center p-2 m-2"> NUEVO PRODUCTO </h1>
+    <form class="row g-3 d-flex justify-content-center">
+        <div class="col-10">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nuevoProducto.nombre" placeholder="Ingrese nombre">
+        </div>
+        <div class="col-10">
+          <label for="descripcion" class="form-label">Descripcion</label>
+          <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="nuevoProducto.descripcion" placeholder="Ingrese descripcion">
+        </div>
+        <div class="col-10">
+          <label for="img" class="form-label">Url Imagen</label>
+          <input type="text" class="form-control" id="img" name="img" placeholder="Ingrese URL de la imagen" [(ngModel)]="nuevoProducto.imagen">
+        </div>
+        <div class="col-5">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="text" class="form-control" id="precio" placeholder="Ingrese Precio" name="precio" [(ngModel)]="nuevoProducto.precio">
+        </div>
+        <div class="col-5">
+          <label for="stock" class="form-label">Stock</label>
+          <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="nuevoProducto.stock" placeholder="Ingrese stock">
+        </div>
+        <div class="col-5">
+          <label for="destacado" class="form-label">Destacado</label>
+          <select id="destacado" class="form-select" name="destacado" [(ngModel)]="nuevoProducto.destacado">
+            <option value="true" selected>SI</option>
+            <option value="false">NO</option>
+          </select>
+        </div>
+        
+        <div class="col-10 d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary me-2" (click)="guardarProducto()">Guardar</button>
+          <button type="submit" class="btn btn-dark" (click)="volver()">Volver</button>
+
+        </div>
+      </form>
+</div>
