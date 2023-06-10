@@ -8,6 +8,7 @@ import { FormularioProductoComponent } from './componentes/formulario-producto/f
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { TransaccionComponent } from './componentes/transaccion/transaccion.component';
+import { FormularioTransaccionComponent } from './componentes/formulario-transaccion/formulario-transaccion.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TransaccionComponent } from './componentes/transaccion/transaccion.comp
     ProductoComponent,
     NavbarComponent,
     FormularioProductoComponent,
-    TransaccionComponent
+    TransaccionComponent,
+    FormularioTransaccionComponent
   ],
   imports: [
     BrowserModule,

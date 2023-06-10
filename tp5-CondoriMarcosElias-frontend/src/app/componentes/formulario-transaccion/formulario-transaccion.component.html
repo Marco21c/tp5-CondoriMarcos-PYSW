@@ -1,0 +1,34 @@
+<div class="container mb-2  bg-opacity-50 bg-primary">
+    <h1 class="text-center p-2 m-2">CONVERSOR DE DIVISAS </h1>
+    <form class="row g-3 d-flex justify-content-center">
+        <div class="col-8">
+            <label for="email" class="form-label">Correo Electronico</label>
+            <input type="email" class="form-control" id="email" name="email"  placeholder="Ingrese email" [(ngModel)]="transaccion.emailCliente">
+          </div>
+        <div class="col-8">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <input type="number" class="form-control" id="cantidad" name="cantidad"  placeholder="Ingrese cantidad" [(ngModel)]="transaccion.cantidadOrigen">
+        </div>
+        <div class="col-8">
+          <label for="de" class="form-label">De</label>
+          <select id="de" class="form-select" name="de" [(ngModel)]="transaccion.monedaOrigen">
+            <option value="{{divisa.symbol}} - {{divisa.name}}" *ngFor="let divisa of divisas" >{{divisa.symbol}} - {{divisa.name}}</option>
+          </select>
+        </div>
+        <div class="col-8">
+          <label for="a" class="form-label">A</label>
+          <select id="a" class="form-select" name="a" [(ngModel)]="transaccion.monedaDestino">
+            <option value="{{divisa.symbol}} - {{divisa.name}}" *ngFor="let divisa of divisas" >{{divisa.symbol}} - {{divisa.name}}</option>
+          </select>
+        </div>
+        <div class="col-8">
+            <input type="text" class="form-control" id="resultado" name="resultado"  disabled [(ngModel)]="transaccion.cantidadDestino">
+          </div>
+        
+        <div class="col-12 d-flex justify-content-center mb-4">
+          <button type="submit" class="btn btn-warning me-2" (click)="convertir()">Convertir</button>
+          <button type="submit" class="btn btn-primary" (click)="volver()">Volver</button>
+
+        </div>
+      </form>
+</div>

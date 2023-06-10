@@ -1,1 +1,45 @@
-<p>transaccion works!</p>
+<div class="container mt-4">
+    <h1 class="text-center p-2 m-2"> Transacciones </h1>
+ <div class="row">  
+   <div class="col-sm-7">
+   <form class="d-flex" role="search">
+     <label for="origen" class="me-2"> Origen</label>
+     <select class="form-select me-4" id="origen" aria-label="Default select example" name="origen" [(ngModel)]="origen">
+        <option *ngFor="let divisa of divisas" value="{{divisa}}">{{divisa}}</option>
+      </select>
+      <label for="destino" class="me-2"> Destino</label>
+      <select class="form-select me-4" id="destino" aria-label="Default select example" name="destino" [(ngModel)]="destino">
+        <option *ngFor="let divisa of divisas" value="{{divisa}}">{{divisa}}</option>
+      </select>
+    <button class="btn btn-outline-primary" type="submit" (click)="listarTransaccionesxTipo()" >Recuperar</button>
+   </form>
+    </div>
+    <div class="col-sm-5">
+        <a class="btn btn-outline-dark mt-sm-0 mt-4 me-3" (click)="listarTransacciones()" >Recuperar Todos</a>
+        <a class="btn btn-outline-success mt-sm-0 mt-4" (click)="irFormulario()" >Nueva Transaccion</a>
+    </div>
+ </div>
+
+ <table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Email Cliente</th>
+        <th scope="col">Tasa Conversion</th>
+        <th scope="col">Cantidad Origen</th>
+        <th scope="col">Moneda Origen</th>
+        <th scope="col">Cantidad Destino</th>
+        <th scope="col">Moneda Destino</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaccion of transacciones">
+        <td>{{transaccion.emailCliente}}</td>
+        <td>$ {{transaccion.tasaConversion}}</td>
+        <td>$ {{transaccion.cantidadOrigen}}</td>
+        <td>{{transaccion.monedaOrigen}}</td>
+        <td>$ {{transaccion.cantidadDestino}}</td>
+        <td>{{transaccion.monedaDestino}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
