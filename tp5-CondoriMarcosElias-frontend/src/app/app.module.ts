@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { TransaccionComponent } from './componentes/transaccion/transaccion.component';
 import { FormularioTransaccionComponent } from './componentes/formulario-transaccion/formulario-transaccion.component';
+import { TicketComponent } from './componentes/ticket/ticket.component';
+import { FormularioTicketComponent } from './componentes/formulario-ticket/formulario-ticket.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormularioTransaccionComponent } from './componentes/formulario-transac
     NavbarComponent,
     FormularioProductoComponent,
     TransaccionComponent,
-    FormularioTransaccionComponent
+    FormularioTransaccionComponent,
+    TicketComponent,
+    FormularioTicketComponent
   ],
   imports: [
     BrowserModule,

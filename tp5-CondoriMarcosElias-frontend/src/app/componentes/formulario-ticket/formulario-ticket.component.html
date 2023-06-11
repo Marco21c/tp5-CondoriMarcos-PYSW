@@ -1,0 +1,33 @@
+<div class="container mb-2  bg-opacity-50 bg-primary">
+    <h1 class="text-center p-2 m-2">NUEVO TICKET </h1>
+    <form class="row g-3 d-flex justify-content-center">
+        <div class="col-8">
+            <label for="precio" class="form-label">Precio del Ticket</label>
+            <input type="number" class="form-control" id="precio" name="precio"  placeholder="Ingrese precio del ticket" [(ngModel)]="ticket.precioTicket">
+          </div>
+        <div class="col-8">
+            <label for="origen" class="form-label me-2"> Categoria</label>
+            <select class="form-select me-4" id="categoria" aria-label="Default select example" name="categoria" [(ngModel)]="ticket.categoriaEspectador">
+               <option value="l" selected>Local</option>
+               <option value="e">Extranjero</option>
+             </select>
+        </div>
+        <div class="col-8">
+          <label for="espectador" class="form-label">Espectador</label>
+          <select id="espectador" class="form-select" name="espectador" [(ngModel)]="ticket.espectador">
+            <option [ngValue]="espectador" *ngFor="let espectador of espectadores" > {{espectador.nombre}} {{espectador.apellido}}</option>
+          </select>
+        </div>
+        <div class="col-8">
+          <label for="fecha" class="form-label">Fecha de Cobro</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Ingrese fecha de cobro"  [(ngModel)]="ticket.fechaCompra">
+        </div>
+        
+        
+        <div class="col-12 d-flex justify-content-center mb-4">
+          <button type="submit" class="btn btn-warning me-2" (click)="guardarTicket()">Guardar</button>
+          <button type="submit" class="btn btn-primary" (click)="volver()" >Volver</button>
+
+        </div>
+      </form>
+</div>

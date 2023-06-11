@@ -1,0 +1,38 @@
+<div class="container-md mt-4">
+    <h1 class="text-center p-2 m-2"> Tickets </h1>
+     <div class="row">  
+       <div class="col-lg-7">
+       <form class="d-flex" role="search">
+         <label for="origen" class="form-label me-2"> Categoria</label>
+         <select class="form-select me-4" id="categoria" aria-label="Default select example" name="categoria" [(ngModel)]="categoria">
+            <option value="l" selected>Local</option>
+            <option value="e">Extranjero</option>
+          </select>
+        <button class="btn btn-outline-success" type="submit"  (click)="obtenerTicketsxCategoria()">Buscar</button>
+       </form>
+        </div>
+        <div class="col-lg-5">
+            <a class="btn btn-outline-dark mt-lg-0 mt-4 me-3" (click)="obtenerTickets()">Ver Todos</a>
+            <a class="btn btn-outline-primary mt-lg-0 mt-4 me-3" (click)="nuevoTicket()"> Nuevo Ticket</a>
+
+        </div>
+     </div>
+
+     <div class="card text-center mt-3" *ngFor="let ticket of tickets">
+        <div class="card-header">
+          Fecha de Compra: {{ticket.fechaCompra}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ticket.espectador.nombre}} {{ticket.espectador.apellido}}</h5>
+          <p class="card-text"> {{ticket.espectador.email}}</p>
+          <p class="card-text" *ngIf="ticket.categoriaEspectador =='l'" >Categoria: Local</p>
+          <p class="card-text" *ngIf="ticket.categoriaEspectador =='e'" >Categoria: Extranjero</p>
+          <a  class="btn btn-outline-warning me-2" (click)="editarTicket(ticket)">Modificar</a>
+          <a  class="btn btn-outline-danger" (click)="eliminarTicket(ticket)">Eliminar</a>
+        </div>
+        <div class="card-footer text-body-secondary">
+          Precio : $ {{ticket.precioTicket}}
+        </div>
+     </div>
+    
+</div>

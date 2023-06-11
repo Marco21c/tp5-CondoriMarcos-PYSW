@@ -33,6 +33,7 @@ export class ProductoComponent {
 
     )   
    }
+   
 
    agregarProducto(){
      this.router.navigate(['formProducto',0]);
