@@ -61,5 +61,16 @@ ticketCtrl.getEspectadores = async(req,res) => {
         })
     }
 }
+ticketCtrl.getTicket = async(req,res) => {
+    try{
+        const ticket = await Ticket.findById(req.params.id).populate("espectador");    
+        res.json(ticket);
+    }catch(error){
+            res.status(400).json({
+                'status':'0',
+                'msg':'Error en la operacion'
+            });
+    }
+}
 
 module.exports = ticketCtrl;

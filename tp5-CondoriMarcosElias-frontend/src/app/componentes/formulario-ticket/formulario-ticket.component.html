@@ -25,7 +25,8 @@
         
         
         <div class="col-12 d-flex justify-content-center mb-4">
-          <button type="submit" class="btn btn-warning me-2" (click)="guardarTicket()">Guardar</button>
+          <button type="submit" class="btn btn-warning me-2" (click)="modificarTicket()" *ngIf="accion=='update'">Modificar</button>
+          <button type="submit" class="btn btn-warning me-2" (click)="guardarTicket()" *ngIf="accion=='new'">Guardar</button>
           <button type="submit" class="btn btn-primary" (click)="volver()" >Volver</button>
 
         </div>

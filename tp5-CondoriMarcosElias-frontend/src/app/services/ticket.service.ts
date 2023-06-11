@@ -57,4 +57,23 @@ export class TicketService {
     }
     return this._http.get(this.urlBase+"espectador",httpOptions);
    }
+   getTicket(id:string):Observable<any>{
+    let httpOptions = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+    }
+    return this._http.get(this.urlBase+"ticket/"+id,httpOptions);
+   }
+   putTicket(ticket:Ticket):Observable<any>{
+    let httpOptions = {
+      headers: new HttpHeaders({
+        "Content-type":"application/json"
+      }),
+      params: new HttpParams()
+    }
+    let body = JSON.stringify(ticket);
+    return this._http.put(this.urlBase+"ticket/"+ticket._id,body,httpOptions);
+   }
 }
