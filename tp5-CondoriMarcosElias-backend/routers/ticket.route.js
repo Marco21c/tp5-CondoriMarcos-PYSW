@@ -9,6 +9,5 @@ router.get('/:id',ticketCtrl.getTicket);
 router.post('/',ticketCtrl.createTicket);
 router.delete('/:id',ticketCtrl.deleteTicket);
 router.put('/:id',ticketCtrl.putTicket);
-router.get('/:tipoEspectador',ticketCtrl.getEspectadores);
 
 module.exports = router;

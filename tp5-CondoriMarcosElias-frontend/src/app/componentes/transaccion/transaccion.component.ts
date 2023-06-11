@@ -13,6 +13,7 @@ export class TransaccionComponent {
   origen!:string;
   destino!:string;
   divisas:Array<string> = new Array<string>();
+  divisas2:Array<string> = new Array<string>();
 
 
    constructor(private transaccionService:TransaccionService,private router:Router){
@@ -34,7 +35,9 @@ export class TransaccionComponent {
             this.transacciones.forEach((element:any) => {
                 
                 this.divisas.push(element.monedaOrigen);
-                this.divisas.push(element.monedaDestino);
+                this.divisas = Array.from(new Set(this.divisas));
+                this.divisas2.push(element.monedaDestino);
+                this.divisas2 = Array.from(new Set(this.divisas2));
             });
         },
        error=>{

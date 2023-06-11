@@ -25,9 +25,9 @@ export class TicketService {
       headers: new HttpHeaders({
 
       }),
-      params: new HttpParams()
+      params: new HttpParams().append('categoriaEspectador',categoria)
     }
-    return this._http.get(this.urlBase+"ticket/"+categoria,httpOptions);
+    return this._http.get(this.urlBase+"ticket",httpOptions);
   }
    deleteTicket(id:string):Observable<any>{
     let httpOptions = {

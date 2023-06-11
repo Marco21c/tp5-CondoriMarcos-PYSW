@@ -26,10 +26,10 @@ export class TransaccionService {
         headers: new HttpHeaders({
     
         }),
-        params: new HttpParams()
+        params: new HttpParams().append('monedaOrigen',origen).append('monedaDestino',destino)
        }
     
-       return this._http.get(this.urlBase+"transaccion/"+origen+"/"+destino,httpOptions); 
+       return this._http.get(this.urlBase+"transaccion",httpOptions); 
     } 
     postTransacccion(transaccion:Transaccion):Observable<any>{
       const httpOptions = {

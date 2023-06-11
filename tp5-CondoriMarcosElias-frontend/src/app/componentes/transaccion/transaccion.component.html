@@ -1,7 +1,7 @@
 <div class="container mt-4">
     <h1 class="text-center p-2 m-2"> Transacciones </h1>
  <div class="row">  
-   <div class="col-sm-7">
+   <div class="col-lg-7">
    <form class="d-flex" role="search">
      <label for="origen" class="me-2"> Origen</label>
      <select class="form-select me-4" id="origen" aria-label="Default select example" name="origen" [(ngModel)]="origen">
@@ -9,14 +9,14 @@
       </select>
       <label for="destino" class="me-2"> Destino</label>
       <select class="form-select me-4" id="destino" aria-label="Default select example" name="destino" [(ngModel)]="destino">
-        <option *ngFor="let divisa of divisas" value="{{divisa}}">{{divisa}}</option>
+        <option *ngFor="let divisa of divisas2" value="{{divisa}}">{{divisa}}</option>
       </select>
     <button class="btn btn-outline-primary" type="submit" (click)="listarTransaccionesxTipo()" >Recuperar</button>
    </form>
     </div>
-    <div class="col-sm-5">
-        <a class="btn btn-outline-dark mt-sm-0 mt-4 me-3" (click)="listarTransacciones()" >Recuperar Todos</a>
-        <a class="btn btn-outline-success mt-sm-0 mt-4" (click)="irFormulario()" >Nueva Transaccion</a>
+    <div class="col-lg-5">
+        <a class="btn btn-outline-dark mt-lg-0 mt-4 me-3" (click)="listarTransacciones()" >Recuperar Todos</a>
+        <a class="btn btn-outline-success mt-lg-0 mt-4" (click)="irFormulario()" >Nueva Transaccion</a>
     </div>
  </div>
 

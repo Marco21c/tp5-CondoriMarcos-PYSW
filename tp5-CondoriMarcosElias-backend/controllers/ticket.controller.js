@@ -17,7 +17,12 @@ ticketCtrl.createTicket = async(req,res) => {
    }
 }
 ticketCtrl.getTickets = async(req,res) => {
-    var tickets = await Ticket.find().populate("espectador");
+    let criterio = {};
+    if((req.query.categoriaEspectador != null) && (req.query.categoriaEspectador!="")){
+        criterio.categoriaEspectador = req.query.categoriaEspectador;
+    }
+       
+    var tickets = await Ticket.find(criterio).populate("espectador");
     res.json(tickets);
 }
 ticketCtrl.deleteTicket = async(req,res) => {
@@ -50,17 +55,7 @@ ticketCtrl.putTicket = async(req,res) => {
         })
     }
 }
-ticketCtrl.getEspectadores = async(req,res) => {
-    var tickets = await Ticket.find({categoriaEspectador:req.params.tipoEspectador}).populate("espectador");
-    try{
-       res.status(200).json(tickets);  
-    }catch(error){
-        res.status(400).json({
-            'status': '0', 
-            'msg': 'Error procesando la operacion'
-        })
-    }
-}
+
 ticketCtrl.getTicket = async(req,res) => {
     try{
         const ticket = await Ticket.findById(req.params.id).populate("espectador");    

@@ -2,7 +2,12 @@ const Transaccion = require('../models/transaccion');
 const transaccionCtrl = {}
 
 transaccionCtrl.getTransacciones = async (req, res) => {
-    var transaccion = await Transaccion.find();
+    let criterio = {};
+    if((req.query.monedaOrigen != null) && (req.query.monedaOrigen!="") && (req.query.monedaDestino != null) && (req.query.monedaDestino!="") ){
+        criterio.monedaOrigen = req.query.monedaOrigen;
+        criterio.monedaDestino = req.query.monedaDestino;
+    }
+    var transaccion = await Transaccion.find(criterio);
     res.json(transaccion);
 }
 
@@ -31,17 +36,6 @@ transaccionCtrl.getTransaccionxCliente = async(req,res) => {
             'msg' : 'Error procesando operacion'
            })
     }
-}
-transaccionCtrl.getTransaccionesxDivisas = async(req,res) => {
-    var transacciones = await Transaccion.find({monedaOrigen:req.params.divisaOrigen,monedaDestino:req.params.divisaDestino});
-    try{
-        res.status(200).json(transacciones)
-      }catch(error){
-          res.status(400).json({
-              'status':'0',
-              'msg' : 'Error procesando operacion'
-             })
-      }
 }
 
 module.exports = transaccionCtrl;
