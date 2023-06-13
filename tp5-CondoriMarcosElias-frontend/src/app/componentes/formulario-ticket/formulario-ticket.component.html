@@ -1,32 +1,50 @@
 <div class="container mb-2  bg-opacity-50 bg-primary">
     <h1 class="text-center p-2 m-2">NUEVO TICKET </h1>
-    <form class="row g-3 d-flex justify-content-center">
+    <form class="row g-3 d-flex justify-content-center"  #ticketForm="ngForm">
         <div class="col-8">
             <label for="precio" class="form-label">Precio del Ticket</label>
-            <input type="number" class="form-control" id="precio" name="precio"  placeholder="Ingrese precio del ticket" [(ngModel)]="ticket.precioTicket">
+            <input type="number" class="form-control" id="precio" name="precio"  placeholder="Ingrese precio del ticket" [(ngModel)]="ticket.precioTicket"
+            #precio="ngModel" required>
+             <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
+            <div *ngIf="precio.errors?.['required']">
+            Precio es requerido.
+          </div>
+        </div>
           </div>
         <div class="col-8">
             <label for="origen" class="form-label me-2"> Categoria</label>
-            <select class="form-select me-4" id="categoria" aria-label="Default select example" name="categoria" [(ngModel)]="ticket.categoriaEspectador">
+            <select class="form-select me-4" id="categoria" aria-label="Default select example" name="categoria" [(ngModel)]="ticket.categoriaEspectador"
+            #categoria="ngModel"  required>
                <option value="l" selected>Local</option>
                <option value="e">Extranjero</option>
              </select>
+             <div [hidden]="categoria.valid || categoria.pristine" class="alert alert-danger">
+                Este campo es requerido.
+             </div>
         </div>
         <div class="col-8">
           <label for="espectador" class="form-label">Espectador</label>
-          <select id="espectador" class="form-select" name="espectador" [(ngModel)]="ticket.espectador">
+          <select id="espectador" class="form-select" name="espectador" [(ngModel)]="ticket.espectador"
+          #espectador="ngModel" required>
             <option [ngValue]="espectador" *ngFor="let espectador of espectadores" > {{espectador.nombre}} {{espectador.apellido}}</option>
           </select>
+          <div [hidden]="espectador.valid || espectador.pristine" class="alert alert-danger">
+            Este campo es requerido.
+         </div>
         </div>
         <div class="col-8">
           <label for="fecha" class="form-label">Fecha de Cobro</label>
-          <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Ingrese fecha de cobro"  [(ngModel)]="ticket.fechaCompra">
+          <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Ingrese fecha de cobro"  [(ngModel)]="ticket.fechaCompra"
+          #fecha="ngModel" required>
+          <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)" class="alert alert-danger">
+            <div *ngIf="fecha.errors?.['required']">
+            Fecha es requerido.
+          </div>
         </div>
-        
-        
+        </div>        
         <div class="col-12 d-flex justify-content-center mb-4">
-          <button type="submit" class="btn btn-warning me-2" (click)="modificarTicket()" *ngIf="accion=='update'">Modificar</button>
-          <button type="submit" class="btn btn-warning me-2" (click)="guardarTicket()" *ngIf="accion=='new'">Guardar</button>
+          <button type="submit" class="btn btn-warning me-2" (click)="modificarTicket()"  [disabled]="!ticketForm.form.valid" *ngIf="accion=='update'">Modificar</button>
+          <button type="submit" class="btn btn-warning me-2" (click)="guardarTicket()"  [disabled]="!ticketForm.form.valid" *ngIf="accion=='new'">Guardar</button>
           <button type="submit" class="btn btn-primary" (click)="volver()" >Volver</button>
 
         </div>
